@@ -216,28 +216,28 @@ export const FortuneCookieGame: FC = () => {
         }}
       >
         <div className="absolute inset-0 bg-black/70" />
-        <div className="relative z-10 flex flex-col items-center gap-4 text-center">
+        <div className="relative z-10 flex flex-col items-center gap-2 text-center">
           <Image 
             src="/game/loss-reward.png" 
             alt="Game Over" 
-            width={128}
-            height={128}
-            className="w-32 h-32 object-contain animate-pulse"
+            width={80}
+            height={80}
+            className="w-20 h-20 object-contain animate-pulse"
           />
-          <h1 className="text-4xl font-bold text-red-500 animate-bounce">
+          <h1 className="text-2xl font-bold text-red-500 animate-bounce">
             GAME OVER
           </h1>
-          <div className="space-y-2">
-            <p className="text-lg text-gray-300">
+          <div className="space-y-1">
+            <p className="text-sm text-gray-300">
               You survived <span className="text-yellow-400 font-bold">{round}</span> rounds!
             </p>
-            <p className="text-xl text-yellow-400">
+            <p className="text-base text-yellow-400">
               Best Score: <span className="font-bold">{bestScore}</span> 💰
             </p>
           </div>
           <button
             onClick={restartGame}
-            className="mt-4 px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-bold text-lg hover:scale-105 transition-transform shadow-lg shadow-purple-500/50"
+            className="mt-2 px-6 py-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-bold text-sm hover:scale-105 transition-transform shadow-lg shadow-purple-500/50"
           >
             🔄 PLAY AGAIN
           </button>
@@ -260,10 +260,10 @@ export const FortuneCookieGame: FC = () => {
       
       {showConfetti && (
         <div className="absolute inset-0 pointer-events-none z-50 overflow-hidden">
-          {[...Array(20)].map((_, i) => (
+          {[...Array(15)].map((_, i) => (
             <div
               key={i}
-              className="absolute text-2xl animate-bounce"
+              className="absolute text-lg animate-bounce"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -277,38 +277,38 @@ export const FortuneCookieGame: FC = () => {
         </div>
       )}
       
-      <div className="relative z-10 flex flex-col h-full p-3 justify-between">
+      <div className="relative z-10 flex flex-col h-full p-2 justify-between">
         
         {/* HEADER - Points Display */}
         <div className="flex justify-between items-center">
-          <div className="bg-black/60 backdrop-blur-sm rounded-xl px-4 py-2 border border-yellow-500/30">
-            <p className="text-[10px] text-gray-400 uppercase tracking-wide">Points</p>
-            <p className="text-2xl font-bold text-yellow-400 flex items-center gap-1">
+          <div className="bg-black/60 backdrop-blur-sm rounded-lg px-3 py-1 border border-yellow-500/30">
+            <p className="text-[9px] text-gray-400 uppercase tracking-wide">Points</p>
+            <p className="text-lg font-bold text-yellow-400 flex items-center gap-1">
               💰 {points}
               {pointsDelta !== 0 && (
-                <span className={`text-sm ml-1 animate-pulse ${pointsDelta > 0 ? 'text-green-400' : 'text-red-400'}`}>
+                <span className={`text-xs ml-1 animate-pulse ${pointsDelta > 0 ? 'text-green-400' : 'text-red-400'}`}>
                   {pointsDelta > 0 ? '+' : ''}{pointsDelta}
                 </span>
               )}
             </p>
           </div>
-          <div className="bg-black/60 backdrop-blur-sm rounded-xl px-3 py-2 border border-purple-500/30 text-right">
-            <p className="text-[10px] text-gray-400">Round</p>
-            <p className="text-lg font-bold text-purple-400">{round}</p>
+          <div className="bg-black/60 backdrop-blur-sm rounded-lg px-2 py-1 border border-purple-500/30 text-right">
+            <p className="text-[9px] text-gray-400">Round</p>
+            <p className="text-base font-bold text-purple-400">{round}</p>
           </div>
         </div>
 
         {/* COOKIE AREA */}
-        <div className="flex-1 flex flex-col items-center justify-center py-2">
+        <div className="flex-1 flex flex-col items-center justify-center py-1">
           <div className={`relative transition-transform duration-200 ${cookieShake ? 'animate-shake' : 'animate-float'}`}>
             <Image
               src={gameState === 'result' ? '/game/cookie-cracked.png' : '/game/cookie-whole.png'}
               alt="Fortune Cookie"
-              width={144}
-              height={144}
-              className="w-36 h-36 object-contain drop-shadow-2xl"
+              width={100}
+              height={100}
+              className="w-24 h-24 object-contain drop-shadow-2xl"
               style={{
-                filter: 'drop-shadow(0 0 20px rgba(255, 200, 0, 0.5))',
+                filter: 'drop-shadow(0 0 15px rgba(255, 200, 0, 0.5))',
               }}
             />
             
@@ -316,48 +316,48 @@ export const FortuneCookieGame: FC = () => {
               <Image
                 src={lastResult === 'win' ? '/game/win-reward.png' : '/game/loss-reward.png'}
                 alt={lastResult === 'win' ? 'Winner!' : 'Lost'}
-                width={64}
-                height={64}
-                className="absolute -top-6 -right-6 w-16 h-16 object-contain animate-bounce"
+                width={48}
+                height={48}
+                className="absolute -top-4 -right-4 w-12 h-12 object-contain animate-bounce"
               />
             )}
           </div>
 
           {gameState === 'result' && (
-            <div className={`mt-3 p-3 rounded-xl max-w-[280px] text-center ${
+            <div className={`mt-2 p-2 rounded-lg max-w-[240px] text-center ${
               isLucky ? 'bg-green-900/80 border border-green-500' : 'bg-red-900/80 border border-red-500'
             }`}>
-              <p className={`text-xs uppercase tracking-wide mb-1 ${isLucky ? 'text-green-400' : 'text-red-400'}`}>
+              <p className={`text-[10px] uppercase tracking-wide mb-0.5 ${isLucky ? 'text-green-400' : 'text-red-400'}`}>
                 {isLucky ? '🍀 LUCKY' : '💀 UNLUCKY'}
               </p>
-              <p className="text-white italic text-sm">&ldquo;{currentFortune}&rdquo;</p>
-              <p className={`mt-2 text-lg font-bold ${lastResult === 'win' ? 'text-green-400' : 'text-red-400'}`}>
+              <p className="text-white italic text-xs">&ldquo;{currentFortune}&rdquo;</p>
+              <p className={`mt-1 text-sm font-bold ${lastResult === 'win' ? 'text-green-400' : 'text-red-400'}`}>
                 {lastResult === 'win' ? `YOU WON +${bet}! 🎉` : `YOU LOST -${bet} 😢`}
               </p>
             </div>
           )}
 
           {(gameState === 'peeking' || (hasPeeked && gameState === 'betting')) && hint && (
-            <div className="mt-3 p-2 bg-purple-900/80 rounded-lg border border-purple-400 max-w-[260px]">
-              <p className="text-[10px] text-purple-300 uppercase mb-1">👁️ Peek Hint:</p>
-              <p className="text-purple-200 text-xs italic">{hint}</p>
+            <div className="mt-2 p-1.5 bg-purple-900/80 rounded-lg border border-purple-400 max-w-[220px]">
+              <p className="text-[9px] text-purple-300 uppercase mb-0.5">👁️ Peek Hint:</p>
+              <p className="text-purple-200 text-[10px] italic">{hint}</p>
             </div>
           )}
         </div>
 
         {/* BETTING SECTION */}
         {(gameState === 'betting' || gameState === 'peeking') && (
-          <div className="space-y-2">
-            <div className="bg-black/60 backdrop-blur-sm rounded-xl p-3 border border-white/10">
-              <p className="text-[10px] text-gray-400 uppercase tracking-wide mb-2 text-center">Your Bet</p>
+          <div className="space-y-1.5">
+            <div className="bg-black/60 backdrop-blur-sm rounded-lg p-2 border border-white/10">
+              <p className="text-[9px] text-gray-400 uppercase tracking-wide mb-1.5 text-center">Your Bet</p>
               
-              <div className="flex justify-center gap-2 mb-2">
+              <div className="flex justify-center gap-1.5 mb-1.5">
                 <button
                   onClick={() => setQuickBet(10)}
                   disabled={10 > points}
-                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
+                  className={`px-2 py-0.5 rounded text-[10px] font-bold transition-all ${
                     bet === 10 
-                      ? 'bg-gradient-to-r from-yellow-500 to-orange-500 text-black shadow-lg shadow-yellow-500/50 scale-105' 
+                      ? 'bg-gradient-to-r from-yellow-500 to-orange-500 text-black shadow-md shadow-yellow-500/50 scale-105' 
                       : 10 > points
                         ? 'bg-gray-700 text-gray-500 cursor-not-allowed opacity-50'
                         : 'bg-gray-800 text-yellow-400 hover:bg-gray-700 border border-yellow-500/30'
@@ -368,9 +368,9 @@ export const FortuneCookieGame: FC = () => {
                 <button
                   onClick={() => setQuickBet(25)}
                   disabled={25 > points}
-                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
+                  className={`px-2 py-0.5 rounded text-[10px] font-bold transition-all ${
                     bet === 25 
-                      ? 'bg-gradient-to-r from-yellow-500 to-orange-500 text-black shadow-lg shadow-yellow-500/50 scale-105' 
+                      ? 'bg-gradient-to-r from-yellow-500 to-orange-500 text-black shadow-md shadow-yellow-500/50 scale-105' 
                       : 25 > points
                         ? 'bg-gray-700 text-gray-500 cursor-not-allowed opacity-50'
                         : 'bg-gray-800 text-yellow-400 hover:bg-gray-700 border border-yellow-500/30'
@@ -381,9 +381,9 @@ export const FortuneCookieGame: FC = () => {
                 <button
                   onClick={() => setQuickBet(50)}
                   disabled={50 > points}
-                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
+                  className={`px-2 py-0.5 rounded text-[10px] font-bold transition-all ${
                     bet === 50 
-                      ? 'bg-gradient-to-r from-yellow-500 to-orange-500 text-black shadow-lg shadow-yellow-500/50 scale-105' 
+                      ? 'bg-gradient-to-r from-yellow-500 to-orange-500 text-black shadow-md shadow-yellow-500/50 scale-105' 
                       : 50 > points
                         ? 'bg-gray-700 text-gray-500 cursor-not-allowed opacity-50'
                         : 'bg-gray-800 text-yellow-400 hover:bg-gray-700 border border-yellow-500/30'
@@ -393,21 +393,21 @@ export const FortuneCookieGame: FC = () => {
                 </button>
                 <button
                   onClick={() => setQuickBet('all')}
-                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
+                  className={`px-2 py-0.5 rounded text-[10px] font-bold transition-all ${
                     bet === points 
-                      ? 'bg-gradient-to-r from-red-500 to-orange-500 text-white shadow-lg shadow-red-500/50 scale-105' 
+                      ? 'bg-gradient-to-r from-red-500 to-orange-500 text-white shadow-md shadow-red-500/50 scale-105' 
                       : 'bg-gray-800 text-red-400 hover:bg-gray-700 border border-red-500/30'
                   }`}
                 >
-                  🎰 ALL IN!
+                  🎰 ALL
                 </button>
               </div>
 
-              <div className="flex items-center justify-center gap-3">
+              <div className="flex items-center justify-center gap-2">
                 <button
                   onClick={() => adjustBet(-5)}
                   disabled={bet <= 5}
-                  className={`w-8 h-8 rounded-full font-bold text-lg transition-all ${
+                  className={`w-6 h-6 rounded-full font-bold text-sm transition-all ${
                     bet <= 5
                       ? 'bg-gray-700 text-gray-500 cursor-not-allowed'
                       : 'bg-gray-800 text-yellow-400 hover:bg-gray-700 border border-yellow-500/30 active:scale-95'
@@ -415,13 +415,13 @@ export const FortuneCookieGame: FC = () => {
                 >
                   -
                 </button>
-                <div className="bg-black/80 rounded-lg px-4 py-2 border border-yellow-500/50 min-w-[80px] text-center">
-                  <span className="text-xl font-bold text-yellow-400">{bet}</span>
+                <div className="bg-black/80 rounded px-3 py-1 border border-yellow-500/50 min-w-[60px] text-center">
+                  <span className="text-base font-bold text-yellow-400">{bet}</span>
                 </div>
                 <button
                   onClick={() => adjustBet(5)}
                   disabled={bet >= points}
-                  className={`w-8 h-8 rounded-full font-bold text-lg transition-all ${
+                  className={`w-6 h-6 rounded-full font-bold text-sm transition-all ${
                     bet >= points
                       ? 'bg-gray-700 text-gray-500 cursor-not-allowed'
                       : 'bg-gray-800 text-yellow-400 hover:bg-gray-700 border border-yellow-500/30 active:scale-95'
@@ -435,27 +435,27 @@ export const FortuneCookieGame: FC = () => {
             <button
               onClick={handlePeek}
               disabled={hasPeeked || points < 10 || gameState !== 'betting'}
-              className={`w-full py-2 rounded-xl font-bold text-sm transition-all ${
+              className={`w-full py-1.5 rounded-lg font-bold text-xs transition-all ${
                 hasPeeked || points < 10
                   ? 'bg-gray-800 text-gray-500 cursor-not-allowed'
-                  : 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:scale-[1.02] shadow-lg shadow-purple-500/30'
+                  : 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:scale-[1.02] shadow-md shadow-purple-500/30'
               }`}
             >
-              👁️ PEEK - 10pts {hasPeeked && '(Used)'}
+              👁️ PEEK -10 {hasPeeked && '✓'}
             </button>
 
-            <div className="flex gap-3">
+            <div className="flex gap-2">
               <button
                 onClick={() => handleGuess(true)}
                 disabled={gameState !== 'betting' && gameState !== 'peeking'}
-                className="flex-1 py-3 rounded-xl font-bold text-base bg-gradient-to-br from-green-500 to-emerald-600 text-white hover:scale-[1.02] transition-transform shadow-lg shadow-green-500/30 active:scale-95"
+                className="flex-1 py-2 rounded-lg font-bold text-sm bg-gradient-to-br from-green-500 to-emerald-600 text-white hover:scale-[1.02] transition-transform shadow-md shadow-green-500/30 active:scale-95"
               >
                 🍀 LUCKY
               </button>
               <button
                 onClick={() => handleGuess(false)}
                 disabled={gameState !== 'betting' && gameState !== 'peeking'}
-                className="flex-1 py-3 rounded-xl font-bold text-base bg-gradient-to-br from-red-500 to-rose-600 text-white hover:scale-[1.02] transition-transform shadow-lg shadow-red-500/30 active:scale-95"
+                className="flex-1 py-2 rounded-lg font-bold text-sm bg-gradient-to-br from-red-500 to-rose-600 text-white hover:scale-[1.02] transition-transform shadow-md shadow-red-500/30 active:scale-95"
               >
                 💀 UNLUCKY
               </button>
@@ -464,18 +464,18 @@ export const FortuneCookieGame: FC = () => {
         )}
 
         {gameState === 'revealing' && (
-          <div className="text-center py-6">
-            <p className="text-xl text-yellow-400 animate-pulse">🥠 Cracking open...</p>
+          <div className="text-center py-3">
+            <p className="text-base text-yellow-400 animate-pulse">🥠 Cracking open...</p>
           </div>
         )}
 
         {gameState === 'result' && (
-          <div className="text-center py-3">
-            <p className="text-sm text-gray-400 animate-pulse">Next round starting...</p>
+          <div className="text-center py-2">
+            <p className="text-xs text-gray-400 animate-pulse">Next round starting...</p>
           </div>
         )}
 
-        <div className="flex justify-center gap-4 text-[10px] text-gray-500 pt-1">
+        <div className="flex justify-center gap-3 text-[9px] text-gray-500">
           <span>Best: {bestScore} 💰</span>
           <span>|</span>
           <span>Bet: {bet} pts</span>
