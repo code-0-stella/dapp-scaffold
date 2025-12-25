@@ -57,13 +57,13 @@ export const HomeView: FC = () => {
 // Replace this entire GameSandbox component with the one AI generates.
 // Keep the name `GameSandbox` and the `FC` type.
 
-
 const GameSandbox: FC = () => {
   return (
-    <div className="w-full flex">
+    <div className="w-full flex items-center justify-center bg-black">
       <div className="aspect-[9/16] w-full max-w-[420px] bg-[#1a0a2e] rounded-xl overflow-hidden shadow-2xl">
         <FortuneCookieGame />
       </div>
     </div>
   );
 };
+
