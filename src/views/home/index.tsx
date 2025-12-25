@@ -60,8 +60,10 @@ export const HomeView: FC = () => {
 
 const GameSandbox: FC = () => {
   return (
-      <div className="w-full max-w-[360px] h-screen max-h-[800px] flex items-center justify-center">
+    <div className="w-full flex">
+      <div className="aspect-[9/16] w-full max-w-[420px] bg-[#1a0a2e] rounded-xl overflow-hidden shadow-2xl">
         <FortuneCookieGame />
       </div>
+    </div>
   );
 };
