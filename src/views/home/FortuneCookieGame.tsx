@@ -1,4 +1,5 @@
 import { FC, useState, useEffect, useCallback, useRef } from 'react';
+import Image from 'next/image';
 
 // ==================== FORTUNE DATA ====================
 const LUCKY_FORTUNES = [
@@ -216,9 +217,11 @@ export const FortuneCookieGame: FC = () => {
       >
         <div className="absolute inset-0 bg-black/70" />
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
-          <img 
+          <Image 
             src="/game/loss-reward.png" 
             alt="Game Over" 
+            width={128}
+            height={128}
             className="w-32 h-32 object-contain animate-pulse"
           />
           <h1 className="text-4xl font-bold text-red-500 animate-bounce">
@@ -298,9 +301,11 @@ export const FortuneCookieGame: FC = () => {
         {/* COOKIE AREA */}
         <div className="flex-1 flex flex-col items-center justify-center py-2">
           <div className={`relative transition-transform duration-200 ${cookieShake ? 'animate-shake' : 'animate-float'}`}>
-            <img
+            <Image
               src={gameState === 'result' ? '/game/cookie-cracked.png' : '/game/cookie-whole.png'}
               alt="Fortune Cookie"
+              width={144}
+              height={144}
               className="w-36 h-36 object-contain drop-shadow-2xl"
               style={{
                 filter: 'drop-shadow(0 0 20px rgba(255, 200, 0, 0.5))',
@@ -308,9 +313,11 @@ export const FortuneCookieGame: FC = () => {
             />
             
             {gameState === 'result' && lastResult && (
-              <img
+              <Image
                 src={lastResult === 'win' ? '/game/win-reward.png' : '/game/loss-reward.png'}
                 alt={lastResult === 'win' ? 'Winner!' : 'Lost'}
+                width={64}
+                height={64}
                 className="absolute -top-6 -right-6 w-16 h-16 object-contain animate-bounce"
               />
             )}
@@ -323,7 +330,7 @@ export const FortuneCookieGame: FC = () => {
               <p className={`text-xs uppercase tracking-wide mb-1 ${isLucky ? 'text-green-400' : 'text-red-400'}`}>
                 {isLucky ? '🍀 LUCKY' : '💀 UNLUCKY'}
               </p>
-              <p className="text-white italic text-sm">"{currentFortune}"</p>
+              <p className="text-white italic text-sm">&ldquo;{currentFortune}&rdquo;</p>
               <p className={`mt-2 text-lg font-bold ${lastResult === 'win' ? 'text-green-400' : 'text-red-400'}`}>
                 {lastResult === 'win' ? `YOU WON +${bet}! 🎉` : `YOU LOST -${bet} 😢`}
               </p>
