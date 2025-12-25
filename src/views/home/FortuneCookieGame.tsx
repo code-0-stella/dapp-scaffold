@@ -450,7 +450,7 @@ export const FortuneCookieGame: FC = () => {
                 disabled={gameState !== 'betting' && gameState !== 'peeking'}
                 className="flex-1 py-3 rounded-xl font-bold text-base bg-gradient-to-br from-green-500 to-emerald-600 text-white hover:scale-[1.02] transition-transform shadow-lg shadow-green-500/30 active:scale-95"
               >
-                �� LUCKY
+                🍀 LUCKY
               </button>
               <button
                 onClick={() => handleGuess(false)}
